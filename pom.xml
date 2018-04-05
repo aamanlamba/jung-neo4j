@@ -1,0 +1,212 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.aaman.neo4j</groupId>
+  <artifactId>jung-neo4j</artifactId>
+  <version>3.0.1-SNAPSHOT</version>
+
+  <packaging>jar</packaging>
+  <name>Jung Visualization Functions</name>
+  <description>Functions to visualize a Neo4J graph using the Java JUNG library and return the JSON with coordinates or the SVG - file or raw content</description>
+
+  <properties>
+    <neo4j.version>3.3.1</neo4j.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <!-- This gives us the Procedure API our runtime code uses.
+           We have a `provided` scope on it, because when this is
+           deployed in a Neo4j Instance, the API will be provided
+           by Neo4j. If you add non-Neo4j dependencies to this
+           project, their scope should normally be `compile` -->
+      <groupId>org.neo4j</groupId>
+      <artifactId>neo4j</artifactId>
+      <version>${neo4j.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Test Dependencies -->
+    <dependency>
+      <!-- This is used for a utility that lets us start Neo4j with
+           a specific Procedure, which is nice for writing tests. -->
+      <groupId>org.neo4j.test</groupId>
+      <artifactId>neo4j-harness</artifactId>
+      <version>${neo4j.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <!-- Used to send cypher statements to our procedure. -->
+      <groupId>org.neo4j.driver</groupId>
+      <artifactId>neo4j-java-driver</artifactId>
+      <version>1.4.2</version>
+      <scope>test</scope>
+    </dependency>
+<!-- https://mvnrepository.com/artifact/org.neo4j/neo4j-slf4j -->
+
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+    
+    
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-asl</artifactId>
+      <version>1.9.11</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.googlecode.json-simple</groupId>
+      <artifactId>json-simple</artifactId>
+      <version>1.1</version>
+      <scope>compile</scope>
+    </dependency>
+      	<dependency>
+  		<groupId>net.sf.jung</groupId>
+  		<artifactId>jung-api</artifactId>
+  		<version>2.1.1</version>
+  	</dependency>
+  	<!-- https://mvnrepository.com/artifact/net.sf.jung/jung-visualization -->
+<dependency>
+    <groupId>net.sf.jung</groupId>
+    <artifactId>jung-visualization</artifactId>
+    <version>2.1.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/net.sf.jung/jung-graph-impl -->
+<dependency>
+    <groupId>net.sf.jung</groupId>
+    <artifactId>jung-graph-impl</artifactId>
+    <version>2.1.1</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/net.sf.jung/jung-algorithms -->
+<dependency>
+    <groupId>net.sf.jung</groupId>
+    <artifactId>jung-algorithms</artifactId>
+    <version>2.1.1</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/net.sf.jung/jung-io -->
+<dependency>
+    <groupId>net.sf.jung</groupId>
+    <artifactId>jung-io</artifactId>
+    <version>2.1.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.neo4j/neo4j-ogm-embedded-driver -->
+<dependency>
+    <groupId>org.neo4j</groupId>
+    <artifactId>neo4j-ogm-embedded-driver</artifactId>
+    <version>3.1.0</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.neo4j/neo4j-ogm -->
+<dependency>
+    <groupId>org.neo4j</groupId>
+    <artifactId>neo4j-ogm</artifactId>
+    <version>3.1.0</version>
+    <type>pom</type>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.freehep/freehep-graphicsio -->
+<dependency>
+    <groupId>org.freehep</groupId>
+    <artifactId>freehep-graphicsio</artifactId>
+    <version>2.4</version>
+</dependency>
+
+
+
+<!-- https://mvnrepository.com/artifact/org.freehep/freehep-graphics2d -->
+<dependency>
+    <groupId>org.freehep</groupId>
+    <artifactId>freehep-graphics2d</artifactId>
+    <version>2.4</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.freehep/freehep-graphicsbase -->
+<dependency>
+    <groupId>org.freehep</groupId>
+    <artifactId>freehep-graphicsbase</artifactId>
+    <version>2.4</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.freehep/freehep-graphicsio-svg -->
+<dependency>
+    <groupId>org.freehep</groupId>
+    <artifactId>freehep-graphicsio-svg</artifactId>
+    <version>2.4</version>
+</dependency>
+
+
+<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-collections4</artifactId>
+    <version>4.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.neo4j/neo4j-common -->
+<dependency>
+    <groupId>org.neo4j</groupId>
+    <artifactId>neo4j-common</artifactId>
+    <version>3.3.3</version>
+    <scope>test</scope>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.neo4j/neo4j-community -->
+<dependency>
+    <groupId>org.neo4j</groupId>
+    <artifactId>neo4j-community</artifactId>
+    <version>3.3.3</version>
+    <type>pom</type>
+</dependency>
+
+
+<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+<dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>2.6</version>
+</dependency>
+    
+    
+     
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <!-- Neo4j Procedures require Java 8 -->
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <!-- This generates a jar-file with our procedure code,
+             plus any dependencies marked as `compile` scope.
+             This should then be deployed in the `plugins` directory
+             of each Neo4j instance in your deployment.
+             After a restart, the procedure is available for calling. -->
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.4.3</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
